@@ -1,0 +1,17 @@
+{
+  "name": "shopping_list_mern_stack_application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+
+  },
+  "repository": {
+    "mongoose": "^5.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
