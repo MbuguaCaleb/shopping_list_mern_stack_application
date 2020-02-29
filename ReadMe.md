@@ -22,6 +22,23 @@ Body Parser helps out your express server when receiving post requests.
 
 3)Project employs proxy that prefixes the backend server.
 
+```
+
+**Client Dependencies**
+
+```
+(a) npm i bootstrap reactstrap uuid react-transition-group
+
+
+```
+
+**Hooks vs ClassBased Components**
+
+```
+By default classes have life cycle methods which are set the state example component did Mount.
+Hooks bring an alternative way of setting your state without calling the class default methods.
+Traditionally react was more efficient with classes but after introduction of hooks they are more
+functional.
 
 ```
 
