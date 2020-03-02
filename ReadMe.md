@@ -40,6 +40,16 @@ Hooks bring an alternative way of setting your state without calling the class d
 Traditionally react was more efficient with classes but after introduction of hooks they are more
 functional.
 
+Dimistification between classes and hooks is only with how you render your state.And how Lifecycle methods are called
+
+```
+
+**ClassBased state**
+
+```
+this.setstate sets the state when you are using a class...Remember the great role that the spread operator plays in referring to the current state items.
+
+Spread operator [...]takes in the current state.
 ```
 
 **Notes by**
