@@ -2,32 +2,18 @@ import React, { Component } from "react";
 import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { v4 as uuidv4 } from "uuid";
-
-import uuid from "uuid";
+//connect brings in the state to the component
+import { connect } from "react-redux";
+import { getItems } from "../actions/itemActions";
+import PropTypes from "prop-types";
 
 class ShoppingList extends Component {
-  state = {
-    items: [
-      {
-        id: uuidv4(),
-        name: "Eggs"
-      },
-      {
-        id: uuidv4(),
-        name: "Milk"
-      },
-      {
-        id: uuidv4(),
-        name: "Steak"
-      },
-      {
-        id: uuidv4(),
-        name: "Water"
-      }
-    ]
-  };
+  componentDidMount() {
+    this.props.getItems();
+  }
   render() {
-    const { items } = this.state;
+    //this.props.item.items;--->trace to our state
+    const { items } = this.props.item;
     return (
       <Container>
         <Button
@@ -76,4 +62,21 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+//When ever you import an action you pass it as a prop to the component
+//are a form of validation
+ShoppingList.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+
+//remember it gets state from connect
+//remember that item is the name given to this particuar reducer
+const mapStateToProps = state => ({
+  item: state.item
+});
+
+//map stateto props helps us take the global state from connect and
+//use it as a component property.
+//Its mapping a redux state to  component property
+
+export default connect(mapStateToProps, { getItems })(ShoppingList);
