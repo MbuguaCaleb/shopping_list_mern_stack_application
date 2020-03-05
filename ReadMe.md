@@ -145,6 +145,23 @@ Thank you God for an understading of redux.
 
 ```
 
+**Completing Redux**
+
+```
+(a)When you want to pass an id to a class you use bind
+
+(b)State may still be modelled from within the component while using redux.This is especially if you are impementing a componet like adding an item which creates a state...
+
+(c)When implemeting redux you call the specific actions for the CRUD...CREATE, READ,UPDATE , DELETE.
+
+(d)Remember that actions can take a payload or a parameter..This is helpful when implementing a delete or post .Remember that actions are the ones that are called from a component.When implementing a post action you will pass into it a payload from the create component.When implementing a delete you will pass into it an id.
+
+(d)The reducer normally acts on what it receives from the action.The spread operator means that you are returing the current state.It keeps a copy of the state.
+
+(e)Remember functions in javascript are imported with a curly brace.When implementing add or delete you must have the inital state thus mapStateToProps from connect is very important.
+
+```
+
 **Notes by**
 
 ```
