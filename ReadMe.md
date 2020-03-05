@@ -139,7 +139,7 @@ export default combineReducers({
   item: itemReducer
 });
 
-The result of the item reducer is the items which is the state.s
+The result of the item reducer is the items which is the state.
 
 Thank you God for an understading of redux.
 
