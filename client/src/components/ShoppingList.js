@@ -13,6 +13,7 @@ class ShoppingList extends Component {
   }
   render() {
     //this.props.item.items;--->trace to our state
+    //state being brought in
     const { items } = this.props.item;
     return (
       <Container>
@@ -70,6 +71,7 @@ ShoppingList.propTypes = {
 };
 
 //remember it gets state from connect
+//bringing in the state by the name of the reducer at index.js
 //remember that item is the name given to this particuar reducer
 const mapStateToProps = state => ({
   item: state.item
@@ -78,5 +80,4 @@ const mapStateToProps = state => ({
 //map stateto props helps us take the global state from connect and
 //use it as a component property.
 //Its mapping a redux state to  component property
-
 export default connect(mapStateToProps, { getItems })(ShoppingList);
