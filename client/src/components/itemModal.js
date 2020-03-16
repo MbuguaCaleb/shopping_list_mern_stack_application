@@ -77,8 +77,7 @@ class ItemModal extends Component {
   }
 }
 
-//i have to bring in the state since i will be adding to it
-//everytime i do state.item i have my state in form of item
+//brings in the shared component state
 const mapStateToProps = state => ({
   item: state.item
 });

@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const items = require("./routes/api/items"); //this is the Routes file
 const path = require("path");
 
 const app = express();
@@ -14,13 +13,16 @@ const db = require("./config/keys").mongoURI;
 
 //Connect to Mongo
 //Connect to DB
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
-  console.log("connected to db!")
+mongoose.connect(
+  db,
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  () => console.log("connected to db!")
 );
 
 //Use Routes
 //Linking routes from the router file
-app.use("/api/items", items);
+app.use("/api/items", require("./routes/api/items"));
+app.use("/api/users", require("./routes/api/users"));
 
 //serve static assets if we are in production
 
