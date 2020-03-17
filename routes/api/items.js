@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
 //Item Model
 //So that we can make eloquent queries
@@ -18,21 +19,9 @@ router.get("/", (req, res) => {
 });
 
 // @Route POST api/items
-//@desc POST All Ite ms
-//@access Public
-router.post("/", (req, res) => {
-  //creating a new object to post
-  const newItem = new Item({
-    name: req.body.name
-  });
-
-  newItem.save().then(item => res.json(item));
-});
-
-// @Route POST api/items
 //@desc CREATE AN ITEM
-//@access Public
-router.post("/", (req, res) => {
+//@access Private
+router.post("/", auth, (req, res) => {
   //creating a new object to post
   const newItem = new Item({
     name: req.body.name
@@ -44,8 +33,8 @@ router.post("/", (req, res) => {
 
 // @Route DELETE api/items/:id
 //@desc DELETE an  item
-//@access Public
-router.delete("/:id", (req, res) => {
+//@access Private
+router.delete("/:id", auth, (req, res) => {
   Item.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(err =>
