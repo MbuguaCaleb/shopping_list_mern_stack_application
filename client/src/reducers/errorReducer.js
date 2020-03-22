@@ -1,6 +1,7 @@
 import { GET_ERRORS, CLEAR_ERRORS } from "../actions/types";
 
 //state is just a javascript object
+//Id is the statuscode
 const initialState = {
   msg: {},
   status: null,
