@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addItem } from "../actions/itemActions";
-
+import PropTypes from "prop-types";
 class ItemModal extends Component {
   state = {
     modal: false,
@@ -75,11 +75,16 @@ class ItemModal extends Component {
       </div>
     );
   }
+
+  static proptypes = {
+    isAuthenticated: PropTypes.bool
+  };
 }
 
 //brings in the shared component state
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 //Map state to props helps you get the current value of the state then add to it

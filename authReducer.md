@@ -48,3 +48,29 @@ It is called once the state in a particular component updates
 It takes in two parameters...Which are previousprops and nextProps
 
 ```
+
+**NOTICE THE FOLLOWING REACT STORE METHODS**
+
+```
+
+(a)getState()
+
+Returns the current state tree of your application. It is equal to the last value returned by the store's reducer.
+
+(b)dispatch(action)
+
+Dispatches an action. This is the only way to trigger a state change.
+
+
+(c)subscribe(listener)
+
+Adds a change listener. It will be called any time an action is dispatched, and some part of the state tree may potentially have changed. You may then call getState() to read the current state tree inside the callback.
+
+
+(d)replaceReducer(nextReducer)
+
+Replaces the reducer currently used by the store to calculate the state.
+
+It is an advanced API. You might need this if your app implements code splitting, and you want to load some of the reducers dynamically. You might also need this if you implement a hot reloading mechanism for Redux.
+
+```
