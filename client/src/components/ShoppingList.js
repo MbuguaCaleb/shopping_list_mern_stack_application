@@ -28,14 +28,17 @@ class ShoppingList extends Component {
             {items.map(({ _id, name }) => (
               <CSSTransition key={_id} timeout={500} classNames='fade'>
                 <ListGroupItem>
-                  <Button
-                    className='remove-btn'
-                    color='danger'
-                    size='sm'
-                    onClick={this.onDeleteClick.bind(this, _id)}
-                  >
-                    &times;
-                  </Button>
+                  {this.props.isAuthenticated ? (
+                    <Button
+                      className='remove-btn'
+                      color='danger'
+                      size='sm'
+                      onClick={this.onDeleteClick.bind(this, _id)}
+                    >
+                      &times;
+                    </Button>
+                  ) : null}
+
                   {name}
                 </ListGroupItem>
               </CSSTransition>
@@ -45,21 +48,22 @@ class ShoppingList extends Component {
       </Container>
     );
   }
+  //When ever you import an action you pass it as a prop to the component
+  //are a form of validation
+  static propTypes = {
+    getItems: PropTypes.func.isRequired,
+    deleteItem: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool
+  };
 }
-
-//When ever you import an action you pass it as a prop to the component
-//are a form of validation
-ShoppingList.propTypes = {
-  getItems: PropTypes.func.isRequired,
-  deleteItem: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
-};
 
 //remember it gets state from connect
 //bringing in the state by the name of the reducer at index.js
 //remember that item is the name given to this particuar reducer
 const mapStateToProps = state => ({
-  item: state.item
+  item: state.item,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 //map stateto props helps us take the global state from connect and
